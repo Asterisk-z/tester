@@ -1,0 +1,64 @@
+.logo {
+    width: 50%;
+}
+
+.main-menu .mobile-logo {
+    width: 50%;
+}
+
+.hero-right-image .clock {
+    max-width: 70% !important;
+}
+
+.hero-right-image .background {
+    max-width: 100% !important;
+}
+
+@media screen and (max-width: 992px) {
+    .main-menu .mobile-logo {
+        max-width: 170px;
+    }
+}
+
+.footer-subscribe form input {
+    background: #d4d4d4;
+}
+
+.copyright-area .footer-menu li a::hover {
+    color: #000000 !important;
+}
+
+.bg-light-theme {
+    background-color: #d4d4d4;
+}
+
+@media screen and (max-width: 480px) {
+    #subscribe {
+        margin: auto;
+        margin-top: 5px;
+    }
+}
+
+.courses {
+    max-width: 150px;
+}
+
+.header-brand-img {
+    width: 52px;
+}
+
+.login-img {
+    background-color: #799AA1;
+}
+
+.header-brand-img.light-logo {
+    max-width: 170px !important;
+}
+
+
+/* @media  (min-width: 992px) {
+    .main-menu .mobile-logo {
+        max-width: 80px;
+    }
+} */
+
