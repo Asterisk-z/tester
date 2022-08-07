@@ -32,7 +32,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(Auth::user()->role.RouteServiceProvider::DASHBOARD);
+        return redirect()->intended(RouteServiceProvider::DASHBOARD);
     }
 
     public function logout(Request $request)

@@ -19,12 +19,24 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6" v-if="this.auth.role == 'admin'">
                     <div class="card overflow-hidden bg-warning-gradient text-white">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="mt-2">
                                     <h6 class="">Total Users</h6>
+                                    <h2 class="mb-0 number-font">{{ users }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6" v-else>
+                    <div class="card overflow-hidden bg-warning-gradient text-white">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mt-2">
+                                    <h6 class="">Total Personal Activities</h6>
                                     <h2 class="mb-0 number-font">{{ users }}</h2>
                                 </div>
                             </div>

@@ -54,7 +54,7 @@
                                                 <Link :href="'#editActivity' + activity.id"
                                                     data-bs-effect="effect-super-scaled" data-bs-toggle="modal"
                                                     class="btn btn-primary btn-sm ms-3">
-                                                <i class="fa fa-eye fa-1.5x "></i>
+                                                <i class="fa fa-pencil fa-1.5x "></i>
                                                 </Link>
                                                 <Link :href="'#deleteModel' + activity.id"
                                                     data-bs-effect="effect-super-scaled" data-bs-toggle="modal"
@@ -227,7 +227,7 @@
                                             }}</span>
                                     </div>
                                 </div>
-                                <div class=" row mb-4">
+                                <div class=" row mb-4" v-if="this.auth.role == 'admin'">
                                     <label class="col-md-3 form-label">Type</label>
                                     <div class="col-md-9">
                                         <select id="" class="form-control theme-outline-active" v-model="form.type"
