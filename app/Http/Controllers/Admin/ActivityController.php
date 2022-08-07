@@ -21,6 +21,7 @@ class ActivityController extends Controller
                 'image' =>  $activity->image,
                 'date' =>  $activity->date->toDateString(),
                 'type' =>  $activity->type,
+                'user_id' =>  $activity->user_id,
                 'fromNow' =>  Carbon::create($activity->date)->diffForHumans(now()),
             ]),
         ]);
@@ -53,17 +54,18 @@ class ActivityController extends Controller
 
     }
 
-    public function edit(Request $request) {
+    public function update(Request $request) {
 
 
         $data = $request->validate([
             'title' => 'required|string',
             'description' => 'required|string',
-            'image' => 'required',
+            'image' => '',
             'date' => 'required|date',
             'type' => 'required|string',
         ]);
 
+        // dd($data, request('activityId'));
 
         $totalActivityToday = Activity::where('date', 'LIKE' , '%'.$data["date"].'%')->count();
 

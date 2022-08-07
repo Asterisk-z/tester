@@ -48,7 +48,7 @@
                                             <td>{{ activity.title.substr(0, 15) }}</td>
                                             <td>{{ activity.description.substr(0, 30) }}...</td>
                                             <td>{{ activity.date }} <span class="badge  bg-info">{{
-                                                    activity.fromNow }}</span></td>
+                                            activity.fromNow }}</span></td>
                                             <td>{{ activity.type }}</td>
                                             <td>
                                                 <Link :href="'#editActivity' + activity.id"
@@ -57,6 +57,7 @@
                                                 <i class="fa fa-pencil fa-1.5x "></i>
                                                 </Link>
                                                 <Link :href="'#deleteModel' + activity.id"
+                                                    v-if="activity.user_id == this.auth.user.id || auth.user.role == 'admin'"
                                                     data-bs-effect="effect-super-scaled" data-bs-toggle="modal"
                                                     class="btn btn-danger btn-sm ms-3">
                                                 <i class="fa fa-trash fa-1.5x "></i>
@@ -103,7 +104,7 @@
                                                                         <div class="col-md-9">
                                                                             <input type="text"
                                                                                 class="form-control theme-outline-active"
-                                                                                v-model="form.title"
+                                                                                v-model="Eform.title"
                                                                                 :class="{ 'is-invalid': errors.title }">
                                                                             <span class="text-danger"
                                                                                 v-if="errors.title">{{
@@ -117,7 +118,7 @@
                                                                         <div class="col-md-9">
                                                                             <input type="text"
                                                                                 class="form-control theme-outline-active"
-                                                                                v-model="form.description"
+                                                                                v-model="Eform.description"
                                                                                 :class="{ 'is-invalid': errors.description }">
                                                                             <span class="text-danger"
                                                                                 v-if="errors.description">{{
@@ -131,7 +132,7 @@
                                                                         <div class="col-md-9">
                                                                             <select id=""
                                                                                 class="form-control theme-outline-active"
-                                                                                v-model="form.type"
+                                                                                v-model="Eform.type"
                                                                                 :class="{ 'is-invalid': errors.type }">
                                                                                 <option value="personal">Personal
                                                                                 </option>
@@ -148,7 +149,7 @@
                                                                         <div class="col-md-9">
                                                                             <input type="date"
                                                                                 class="form-control theme-outline-active"
-                                                                                v-model="form.date"
+                                                                                v-model="Eform.date"
                                                                                 :class="{ 'is-invalid': errors.date }">
                                                                             <span class="text-danger"
                                                                                 v-if="errors.date">{{
@@ -224,7 +225,7 @@
                                         <input type="text" class="form-control theme-outline-active"
                                             v-model="form.description" :class="{ 'is-invalid': errors.description }">
                                         <span class="text-danger" v-if="errors.description">{{ errors.description
-                                            }}</span>
+                                        }}</span>
                                     </div>
                                 </div>
                                 <div class=" row mb-4" v-if="this.auth.role == 'admin'">
@@ -290,6 +291,13 @@ export default {
                 date: null,
                 type: 'personal',
             }),
+            Eform: this.$inertia.form({
+                title: null,
+                description: null,
+                image: null,
+                date: null,
+                type: 'personal',
+            }),
             imagePreview: null,
         }
     },
@@ -302,10 +310,10 @@ export default {
 
         },
         editActivity(id) {
+            // this.Eform.image = this.form.image
+            this.Eform.put(`/admin/activities/update/${id}`);
 
-            this.form.put(`/admin/activities/update/${id}`);
-
-            window.location.reload();
+            // window.location.reload();
 
         },
         deleteActivity(id) {
