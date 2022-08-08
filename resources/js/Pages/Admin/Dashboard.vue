@@ -19,26 +19,50 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6" v-if="this.auth.role == 'admin'">
-                    <div class="card overflow-hidden bg-warning-gradient text-white">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
+                    <div class="card overflow-hidden bg-gray text-white">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="mt-2">
-                                    <h6 class="">Total Users</h6>
-                                    <h2 class="mb-0 number-font">{{ users }}</h2>
+                                    <h6 class="">Total Edited Articles</h6>
+                                    <h2 class="mb-0 number-font">{{ editedGlobalActivities }}</h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6" v-else>
-                    <div class="card overflow-hidden bg-warning-gradient text-white">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
+                    <div class="card overflow-hidden bg-gray text-white">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="mt-2">
+                                    <h6 class="">Total Edited Articles</h6>
+                                    <h2 class="mb-0 number-font">{{ editedPersonalActivities }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xl-6">
+                    <div class="card overflow-hidden bg-gray text-white">
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="mt-2">
                                     <h6 class="">Total Personal Activities</h6>
-                                    <h2 class="mb-0 number-font">{{ users }}</h2>
+                                    <h2 class="mb-0 number-font">{{ personalActivities }}</h2>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xl-12" v-show="this.auth.user.role == 'admin'">
+                <div class="card overflow-hidden bg-warning-gradient text-white">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mt-2">
+                                <h6 class="">Total Users</h6>
+                                <h2 class="mb-0 number-font">{{ users }}</h2>
                             </div>
                         </div>
                     </div>
@@ -78,6 +102,9 @@ export default {
     props: {
         activities: Number,
         users: Number,
+        personalActivities: Number,
+        editedGlobalActivities: Number,
+        editedPersonalActivities: Number,
         errors: Object,
         auth: Object,
     },
